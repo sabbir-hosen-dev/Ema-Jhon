@@ -1,0 +1,84 @@
+.nav-wrap{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #232323;
+  color:#fff;
+  padding:5px 5%;
+  transition: .4s all ease;
+}
+.nav-fixt{
+  position: fixed;
+  top:0;
+  left:0;
+  z-index: 999;
+  right:0;
+  backdrop-filter: blur(5px);
+  box-shadow: -1px -1px  5px 3px #2a2a2a;
+}
+
+.logo{
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+.nav-wrap ul{
+  display: flex;
+  gap: 25px;
+}
+.gap{
+  padding:0px 12px
+}
+.link{
+  text-decoration: none;
+  color:#fff;
+  font-weight: 500;
+  transition:.3s ease;
+}
+.link:Hover{
+  text-decoration:underline;
+  color:#f84c0d;
+}
+.active{
+  color:#f84c0d;
+}
+.login-btn{
+  color:#fff;
+  text-decoration: none;
+  background: #f84c0d;
+  padding:6px 13px ;
+  border-radius: 5px ;
+  font-weight: bold;
+  cursor: pointer;
+  transition:all .3s ease;
+  border: none;
+}
+.login-btn:hover{
+  color:#ffffff;
+  background: #bc260c;
+}
+
+.img-wrap{
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: #f84c0d;
+  color:#fff;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+img{
+  width: 100%;
+  object-fit: cover;
+}
+img[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  top: -100%;
+  left: 0;
+}

@@ -1,0 +1,30 @@
+.shop{
+    padding:0% 5%; 
+}
+.product-wrap{
+    display: flex;
+    justify-content: center;
+}
+.product{
+    flex:400px;
+    margin-right:5px;
+    border-right:1px solid lightgray;
+    width: 100%;
+}
+.cart{
+    flex:250px;
+    max-width: 30%;
+    position: relative;
+    border-right: 1px solid #ddd;
+}
+.card-w{
+    position: fixed;
+    width:26.5%;
+    top:15%;
+}
+@media  (max-width:700px) {
+    .cart{
+        font-size: 80%;
+        position: relative;
+    }
+}

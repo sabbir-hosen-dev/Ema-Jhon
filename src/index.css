@@ -1,0 +1,91 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+.paddig {
+  padding: 0% 5%;
+  border: none;
+}
+.login-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.susses {
+  color: green;
+}
+.faild {
+  color: red;
+}
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 400px;
+  min-width: 290px;
+}
+input {
+  padding: 7px 10px;
+  font-size: 13px;
+  font-weight: bold;
+  height: 20px;
+  border: 1px solid #221;
+  border-radius: 5px;
+}
+.sign-in-btn {
+  padding: 10px;
+  border: 1px solid #221;
+  border-radius: 20px;
+  background-color: transparent;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3 s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sign-in-btn:hover {
+  background-color: #4696fe;
+}
+.facebook {
+  background-color: #0c5dc6;
+  padding: 5px;
+  border-radius: 50%;
+  color: #fff;
+}
+.google {
+  border-radius: 50%;
+  padding: 5px;
+  background-color: #fff;
+}
+.create {
+  text-decoration: underline;
+  text-decoration-color: #1a2f71;
+  cursor: pointer;
+  color: #1a2f71;
+}
+.error-page {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  flex-direction: column; 
+  text-align: center;
+  justify-content: center;
+  height: 90vh;
+}
+.error-page h1{
+  color:red;
+  width: 100%;
+  font-size: 18vw;
+  margin: 0;
+}
