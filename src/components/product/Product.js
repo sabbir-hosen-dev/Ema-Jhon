@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Product.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
@@ -7,13 +7,9 @@ import { Link } from "react-router-dom";
 
 const Product = (props) => {
   const { addProduct, removeProduct, products } = useShopContext();
+
   const { name, img, seller, price, stock, key, quantity } = props.product;
 
-  const hendleClick = () => {
-    const selectProduct = products.filter((product) => product.key === key);
-    selectProduct[0].quantity = selectProduct[0].quantity + 1;
-    addProduct(key);
-  };
 
   return (
     <div className="single-product-wrap">
@@ -38,7 +34,7 @@ const Product = (props) => {
           <small>Quantity:{quantity}</small>
         </p>
         {props.addShowCard ? (
-          <button className="btn" onClick={hendleClick}>
+          <button className="btn" onClick={() => addProduct(key)}>
             <FontAwesomeIcon icon={faShoppingCart} /> add to cart
           </button>
         ) : (

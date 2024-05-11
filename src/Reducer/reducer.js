@@ -1,11 +1,7 @@
 import { auth } from "../Firebase/Firebase";
-import Data from "../fakeData/index";
-const data = Data;
-
-const shopData = data && data.map((data) => ({ ...data, quantity: 0 }));
 
 export const initialState = {
-  products: shopData,
+  products: "",
   selectProduct: [],
   user: {
     name: "",
@@ -13,19 +9,32 @@ export const initialState = {
     img: "",
     signIn: false,
   },
-  order: false
+  order: false,
 };
+
+
 
 export const reducer = (state, action) => {
   switch (action.type) {
+    case "ADD_PRODUCTS" : 
+    const data = action.payload.map(product => ({...product,quantity: 0}))
+    return {
+      ...state,
+      products : data
+    };
+
     case "ADD_PRODUCT":
-      const filterProduct = shopData.filter(
-        (product) => product.key === action.payload
-      );
-      const updateSelect = [...new Set([...state.selectProduct,filterProduct[0]])]
+      const key = action.payload;
+      state.selectProduct.push(key)
+
+      // const product = state.products.filter(data => data.key === key);
+      
+      
+
+      localStorage.setItem("setProduct",  )
       return {
         ...state,
-        selectProduct: updateSelect,
+        // selectProduct: [...state.selectProduct, key]
       };
 
     case "REMOVE_PRODUCT":
@@ -36,12 +45,13 @@ export const reducer = (state, action) => {
         ...state,
         selectProduct: filterRevew,
       };
+
     case "ADD_USER":
-      const user = auth.currentUser
+      const user = auth.currentUser;
       const { displayName, email, photoURL } = user;
       let userName = displayName && displayName;
       let userEmail = email && email;
-      const userPhoto = photoURL && photoURL
+      const userPhoto = photoURL && photoURL;
       return {
         ...state,
         user: {
@@ -53,12 +63,11 @@ export const reducer = (state, action) => {
         },
       };
 
-    case "ADD_ORDER" : 
-
-    return{
-      ...state,
-      order: action.payload
-    }
+    case "ADD_ORDER":
+      return {
+        ...state,
+        order: action.payload,
+      };
 
     default:
       return state;

@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 import "./Cart.css";
 import { useShopContext } from "../../Hook/useShopContext";
 import { Link } from "react-router-dom";
+
+
 const Cart = () => {
+
   const { selectProduct, order } = useShopContext();
   let total = 0;
   let tax = 0;
@@ -38,6 +41,8 @@ const Cart = () => {
   const toFixed = (num) => {
     return num.toFixed(2);
   };
+
+
   const [cake, setCheack] = useState("");
   useEffect(()=> {
     if (total === 0) {

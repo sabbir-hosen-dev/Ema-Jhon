@@ -24,6 +24,9 @@ const ShopProvider = ({children}) => {
     },
     setOrder:(order) => {
       dispatch({type: "ADD_ORDER",payload:order})
+    },
+    addProducts: (products) => {
+      dispatch({type:"ADD_PRODUCTS", payload:products})
     }
   }
 

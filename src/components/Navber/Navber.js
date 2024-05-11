@@ -32,7 +32,6 @@ function Navber() {
       setUser(false)
 
   };
-  console.log(user)
   return (
     <nav className={`nav-wrap ${navPosition ? "nav-fixt" : " "}`}>
       <div className="logo">Ema-joon</div>

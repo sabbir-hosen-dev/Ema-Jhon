@@ -5,10 +5,7 @@ import Cart from "./../components/Cart/Cart";
 
 function Revew() {
   const { selectProduct,setOrder } = useShopContext();
-  useEffect(() => {
-    setOrder(true)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[])
+  console.log(selectProduct)
   return (
     <div>
       <div className="product-wrap">
