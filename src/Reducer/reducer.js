@@ -3,6 +3,7 @@ import { auth } from "../Firebase/Firebase";
 export const initialState = {
   products: "",
   selectProduct: [],
+  cardProducts : [],
   user: {
     name: "",
     email: "",
@@ -12,30 +13,49 @@ export const initialState = {
   order: false,
 };
 
-
-
 export const reducer = (state, action) => {
   switch (action.type) {
-    case "ADD_PRODUCTS" : 
-    const data = action.payload.map(product => ({...product,quantity: 0}))
-    return {
+
+    case "ADD_CARD":
+    return{
       ...state,
-      products : data
-    };
+      cardProducts : {...state,cardProducts : action.payload}
+    }
 
-    case "ADD_PRODUCT":
-      const key = action.payload;
-      state.selectProduct.push(key)
-
-      // const product = state.products.filter(data => data.key === key);
-      
-      
-
-      localStorage.setItem("setProduct",  )
+    case "ADD_PRODUCTS":
+      const data = action.payload.map((product) => ({
+        ...product,
+        quantity: 0,
+      }));
       return {
         ...state,
-        // selectProduct: [...state.selectProduct, key]
+        products: data,
       };
+
+    case "ADD_PRODUCT":
+      const keyToAdd = action.payload;
+
+      // Check if the product with the same key already exists in selectProduct
+      const existingProductIndex = state.selectProduct.findIndex(
+        (p) => p.productKey === keyToAdd
+      );
+
+      if (existingProductIndex !== -1) {
+        // If the product already exists, update its quantity
+        const updatedSelectProduct = [...state.selectProduct];
+        updatedSelectProduct[existingProductIndex].quantity++;
+        return {
+          ...state,
+          selectProduct: updatedSelectProduct,
+        };
+      } else {
+        // If the product doesn't exist, add it to selectProduct
+        const newProduct = { productKey: keyToAdd, quantity: 1 };
+        return {
+          ...state,
+          selectProduct: [...state.selectProduct, newProduct],
+        };
+      }
 
     case "REMOVE_PRODUCT":
       const filterRevew =

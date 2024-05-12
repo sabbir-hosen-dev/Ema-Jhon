@@ -6,18 +6,19 @@ import { Link } from "react-router-dom";
 
 const Cart = () => {
 
-  const { selectProduct, order } = useShopContext();
+
+  const {  order,cardProducts } = useShopContext();
   let total = 0;
   let tax = 0;
   let items = 0;
 
-  selectProduct &&
-    selectProduct.map((product) => {
+  cardProducts &&
+  cardProducts.map((product) => {
       const { price, quantity } = product;
       return (items = price * quantity);
     });
 
-  let cost = selectProduct.reduce(
+  let cost =   cardProducts && cardProducts.reduce(
     (cost, product) => cost + product.shipping,
     0
   );
@@ -38,9 +39,9 @@ const Cart = () => {
 
   total = items + tax + cost;
 
-  const toFixed = (num) => {
-    return num.toFixed(2);
-  };
+  // const toFixed = (num) => {
+  //   return num.toFixed(2);
+  // };
 
 
   const [cake, setCheack] = useState("");
@@ -57,7 +58,7 @@ const Cart = () => {
       <div className="card-headding">
         <h3>Order Summary</h3>
         <p className=" margin">
-          Items ordered: {selectProduct && selectProduct.length}
+          Items ordered: {cardProducts && cardProducts.length}
         </p>
       </div>
       <div className="card-content-wrap">
@@ -66,7 +67,7 @@ const Cart = () => {
         </p>
         <p>
           <small>
-            $<strong>{toFixed(items)}</strong>
+            $<strong>{items}</strong>
           </small>
         </p>
       </div>
@@ -76,7 +77,8 @@ const Cart = () => {
         </p>
         <p>
           <small>
-            $<strong>{toFixed(tax)}</strong>
+            $<strong>{tax}</strong>
+            {/* toFixed(tax) */}
           </small>
         </p>
       </div>
@@ -86,7 +88,7 @@ const Cart = () => {
         </p>
         <p>
           <small>
-            $<strong>{toFixed(cost)}</strong>
+            $<strong>{cost}</strong>
           </small>
         </p>
       </div>
@@ -94,7 +96,7 @@ const Cart = () => {
       <div className="card-content-wrap">
         <h3>Order Total:</h3>
         <h3>
-          $<strong>{toFixed(total)}</strong>
+          $<strong>{total}</strong>
         </h3>
       </div>
 
@@ -104,7 +106,7 @@ const Cart = () => {
             <button className="btn">Please Order</button>
           </Link>
         ) : cake ? (
-          <Link to="/revew" state={{ selectProduct, addShowCard: false }}>
+          <Link to="/revew" state={{ selectProduct: cardProducts, addShowCard: false }}>
             <button className="btn">Revew Order</button>
           </Link>
         ) : (

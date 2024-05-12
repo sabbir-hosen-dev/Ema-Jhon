@@ -27,6 +27,9 @@ const ShopProvider = ({children}) => {
     },
     addProducts: (products) => {
       dispatch({type:"ADD_PRODUCTS", payload:products})
+    },
+    addCardProduct: (products) => {
+      dispatch({type:"ADD_CARD",payload: products})
     }
   }
 

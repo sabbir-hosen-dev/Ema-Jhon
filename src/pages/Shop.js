@@ -21,7 +21,6 @@ const Shop = () => {
   },[addProducts])
 
 
-  
 
 
   return (
