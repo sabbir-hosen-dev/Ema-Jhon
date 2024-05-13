@@ -3,22 +3,22 @@ import "./Cart.css";
 import { useShopContext } from "../../Hook/useShopContext";
 import { Link } from "react-router-dom";
 
-
 const Cart = () => {
+  const { storeProduct, order } = useShopContext();
 
-
-  const {  order,cardProducts } = useShopContext();
+  
   let total = 0;
   let tax = 0;
   let items = 0;
 
-  cardProducts &&
-  cardProducts.map((product) => {
+  storeProduct &&
+  storeProduct.map((product) => {
       const { price, quantity } = product;
       return (items = price * quantity);
     });
 
-  let cost =   cardProducts && cardProducts.reduce(
+
+  let cost =  storeProduct &&storeProduct.reduce(
     (cost, product) => cost + product.shipping,
     0
   );
@@ -39,10 +39,9 @@ const Cart = () => {
 
   total = items + tax + cost;
 
-  // const toFixed = (num) => {
-  //   return num.toFixed(2);
-  // };
-
+  const toFixed = (num) => {
+    return num.toFixed(2);
+  };
 
   const [cake, setCheack] = useState("");
   useEffect(()=> {
@@ -58,10 +57,10 @@ const Cart = () => {
       <div className="card-headding">
         <h3>Order Summary</h3>
         <p className=" margin">
-          Items ordered: {cardProducts && cardProducts.length}
+          Items ordered: {storeProduct && storeProduct.length}
         </p>
       </div>
-      <div className="card-content-wrap">
+       <div className="card-content-wrap">
         <p>
           <small>Items:</small>
         </p>
@@ -70,43 +69,41 @@ const Cart = () => {
             $<strong>{items}</strong>
           </small>
         </p>
-      </div>
+      </div> 
       <div className="card-content-wrap">
         <p>
           <small>Total tax:</small>
         </p>
         <p>
           <small>
-            $<strong>{tax}</strong>
-            {/* toFixed(tax) */}
+         $<strong> {toFixed(tax)} </strong>
+    
           </small>
         </p>
       </div>
-      <div className="card-content-wrap">
+       <div className="card-content-wrap">
         <p>
           <small>Shipping & handing:</small>
         </p>
         <p>
           <small>
-            $<strong>{cost}</strong>
+            $<strong> {toFixed(cost)} </strong>
           </small>
         </p>
-      </div>
+      </div> 
 
-      <div className="card-content-wrap">
-        <h3>Order Total:</h3>
-        <h3>
-          $<strong>{total}</strong>
-        </h3>
-      </div>
+       <div className="card-content-wrap"> 
+      <h3>Order Total:</h3>
+      <h3> $<strong> {toFixed(total)} </strong></h3>
+      </div> 
 
-      <div className="btn-center">
+       <div className="btn-center">
         {order ? (
           <Link to="/shep-ment">
             <button className="btn">Please Order</button>
           </Link>
         ) : cake ? (
-          <Link to="/revew" state={{ selectProduct: cardProducts, addShowCard: false }}>
+          <Link to="/revew" >
             <button className="btn">Revew Order</button>
           </Link>
         ) : (
@@ -114,7 +111,7 @@ const Cart = () => {
             <button className="btn">Revew Order</button>
           </Link>
         )}
-      </div>
+      </div> 
     </div>
   );
 };

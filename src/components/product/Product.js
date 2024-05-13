@@ -6,27 +6,9 @@ import { useShopContext } from "../../Hook/useShopContext";
 import { Link } from "react-router-dom";
 
 const Product = (props) => {
-  const { addProduct, removeProduct, products,selectProduct,addCardProduct} = useShopContext();
+  const {  storeProductKey, removeProduct} = useShopContext();
 
   const { name, img, seller, price, stock, key, quantity } = props.product;
-
-
-  useEffect(() => {
-    if (selectProduct.length > 0 && products.length > 0) {
-      const filteredProducts = products.filter((product) =>
-        selectProduct.some((item) => item.productKey === product.key)
-      );
-  
-      const updatedRevew = filteredProducts.map((product) => ({
-        ...product,
-        quantity: selectProduct.find((item) => item.productKey === product.key).quantity
-      }));
-  
-      addCardProduct(updatedRevew);
-    }
-  }, [selectProduct, products, addCardProduct]); // Add addCardProduct to the dependency array
-  
-
 
 
   return (
@@ -52,7 +34,7 @@ const Product = (props) => {
           <small>Quantity:{quantity}</small>
         </p>
         {props.addShowCard ? (
-          <button className="btn" onClick={() => addProduct(key)}>
+          <button className="btn" onClick={() =>  storeProductKey(key)}>
             <FontAwesomeIcon icon={faShoppingCart} /> add to cart
           </button>
         ) : (

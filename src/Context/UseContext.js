@@ -9,12 +9,12 @@ const ShopProvider = ({children}) => {
 
   const [state, dispatch] = useReducer(reducer,initialState);
   const value = {
-    products : state.products,
+    allProducts : state.allProducts,
     user:state.user,
-    selectProduct: state.selectProduct,
     order:state.order,
-    addProduct:(product) => {
-      dispatch({type:"ADD_PRODUCT",payload:product})
+    storeProduct : state.storeProduct,
+    addAllProducts:(product) => {
+      dispatch({type:"ADD_ALL_PRODUCTS",payload:product})
     },
     removeProduct:(product) => {
       dispatch({type:"REMOVE_PRODUCT",payload:product})
@@ -25,11 +25,11 @@ const ShopProvider = ({children}) => {
     setOrder:(order) => {
       dispatch({type: "ADD_ORDER",payload:order})
     },
-    addProducts: (products) => {
-      dispatch({type:"ADD_PRODUCTS", payload:products})
+    storeProductKey : (key) => {
+      dispatch({type:"STORE_PRODUCT", payload:key})
     },
-    addCardProduct: (products) => {
-      dispatch({type:"ADD_CARD",payload: products})
+    setOrderType:(value) => {
+      dispatch({type:"SET_ORDER",payload:value})
     }
   }
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect} from "react";
 import { useShopContext } from "../Hook/useShopContext";
 import Product from "../components/product/Product";
 
@@ -7,7 +7,7 @@ import Cart from "../components/Cart/Cart";
 
 const Shop = () => {
 
-  const { products, addProducts} = useShopContext();
+  const {allProducts,addAllProducts} = useShopContext();
 
 
 
@@ -15,10 +15,10 @@ const Shop = () => {
     fetch("http://localhost:5000/products")
     .then(res => res.json())
     .then(data =>{
-      addProducts(data)
+      addAllProducts(data)
     })
     .catch(err => console.log(err))
-  },[addProducts])
+  },[addAllProducts])
 
 
 
@@ -27,14 +27,14 @@ const Shop = () => {
     <div className="shop">
       <div className="product-wrap">
         <div className="product">
-          {products &&
-            products.map((product, index) => (
+          {allProducts &&
+            allProducts.map((product, index) => (
               <Product key={index} addShowCard={true} product={product} />
             ))}
         </div>
         <div className="cart">
           <div className="card-w">
-            {/* <Cart /> */}
+            <Cart />
           </div>
         </div>
       </div>
