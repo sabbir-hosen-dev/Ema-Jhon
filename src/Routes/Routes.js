@@ -9,6 +9,7 @@ import ProductDelels from "../pages/ProductDelels";
 import Login from "../pages/Login";
 import PrivetRoute from "./PrivetRoute";
 import ShepMent from "../pages/ShepMent";
+import ThankYou from "../pages/ThankYou";
 
 function RouteAll() {
   return (
@@ -28,6 +29,7 @@ function RouteAll() {
             </PrivetRoute>
           }
         />
+        <Route path="/thanks" element={<ThankYou />} />
         <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>

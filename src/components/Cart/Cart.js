@@ -1,10 +1,22 @@
 import React, { useEffect, useState } from "react";
 import "./Cart.css";
 import { useShopContext } from "../../Hook/useShopContext";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Cart = () => {
-  const { storeProduct, order } = useShopContext();
+  const { storeProduct } = useShopContext();
+  const [order,setOrder] = useState(true)
+
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname === '/') {
+      setOrder(false);
+    } else {
+      setOrder(true);
+    }
+  }, [location.pathname]);
+
 
   
   let total = 0;

@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useShopContext } from "../Hook/useShopContext";
 import Product from "../components/product/Product";
 import Cart from "./../components/Cart/Cart";
 
 function Revew() {
-  const { selectProduct, products,cardProducts,addCardProduct } = useShopContext();
+  const { storeProduct} = useShopContext();
 
   
   return (
     <div>
       <div className="product-wrap">
         <div className="product">
-          {cardProducts &&
-            cardProducts.map((product, index) => (
+          {storeProduct &&
+            storeProduct.map((product, index) => (
               <Product key={index} product={product} />
             ))}
         </div>

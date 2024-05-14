@@ -22,15 +22,12 @@ const ShopProvider = ({children}) => {
     setUser:(user) => {
       dispatch({type:"ADD_USER",payload:user})
     },
-    setOrder:(order) => {
-      dispatch({type: "ADD_ORDER",payload:order})
-    },
     storeProductKey : (key) => {
       dispatch({type:"STORE_PRODUCT", payload:key})
     },
-    setOrderType:(value) => {
-      dispatch({type:"SET_ORDER",payload:value})
-    }
+    storeReset : () => {
+      dispatch({type:"EMTY_STORE"})
+    },
   }
 
   return <ShopContex.Provider value={value}>
